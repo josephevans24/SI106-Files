@@ -1,0 +1,49 @@
+This is a plain text file, with no formatting. 
+
+I just created it so that you can see what the unix commands
+more and ls do.
+
+It has a lot of lines.
+
+That way, it won't all fit on one screen.
+
+When it fills the screen, there will be a : at the bottom left, 
+to indicate that there is more stuff on another screen.
+
+If you press the down arrow, you'll go to the next line.
+Press page down or space to move down by a whole screenful.
+
+Press the up arrow to go back up a line,
+or page up go back up a screenful.
+
+And press q to quit.
+
+Extra line
+Extra line
+Extra line
+More lines, so that it won't fit on one screen.
+
+Hopefully, your terminal window won't be so big that you can
+fit this whole file on one screen! 
+
+I'm adding more silly lines.
+
+Don't expect anything interesting.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
