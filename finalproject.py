@@ -1,7 +1,9 @@
 import test106 as test
 import csv
 # 1) Get performance function to work
-# 3) Turn it all into two separate classes
+# 2) Turn it all into two separate classes
+# 4) How do I get \x out?
+# 3) Make multiple versions showing guessing getting lower
 
 def collapse_whitespace(txt):
     # turn newlines and tabs into spaces and collapse multiple spaces to just one space
@@ -165,29 +167,35 @@ def most_freq_return(txt):
 original = file('SItextmessages.csv', 'rU')
 
 orange = csv.reader(original)
+#print(orange)
 texts = ""
 for row in orange:
-    hey = row[3]
-    texts = texts+ hey
-print len(texts)
+    texts += row[3] + "\n"
 
-
-cool = texts.replace('!', " ").replace('.', ' ').replace(':', ' ').replace(',', ' ').replace('?', ' ').replace("/", ' ').replace('\\', ' ')
-lsttexts = cool.split()
+#texts = cool.replace('!', " ").replace('.', ' ').replace(':', ' ').replace(',', ' ').replace('?', ' ').replace("/", ' ').replace('\\', ' ')
+lsttexts = texts.split()
 nospaces = collapse_whitespace(texts)
 #print nospaces
 
 #print word_count(texts, 'hey')
 
+#adding comment for github
 lets = []
 for x in nospaces:
     if x not in lets:
         lets.append(x)
 alphabet = "".join(sorted(lets))
-
+# print alphabet
 pink = next_letter_frequencies(nospaces)
 rule2 = next_letter_frequencies(lsttexts)
 
+
+
+# for deep in lsttexts:
+#     for deeper in range(len(deep)-1):
+#         next = deep[deeper+1]
+#         if next == next.upper():
+#             lsttexts.insert((deeper+1), ' ')
 
 #print most_freqs_lets(red)
 #print most_freqs_lets(nospaces)
@@ -220,9 +228,9 @@ for b in rule2.values():
      kumar = most_freq_return(b)
      thanks.append(kumar)
 doit = zip(please, thanks)
-rules.insert(1, doit)
+for i in doit:
+    rules.insert(1,i)
 
 
-performance('Hey bill hows it going', rules)
-
-
+print rules[83030]
+performance('Hey man hows it hanging.', rules)
