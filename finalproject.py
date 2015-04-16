@@ -1,6 +1,6 @@
 import test106 as test
 import csv
-# 1) Get performance function to work
+# 1) Add a rule for past two letters and another for end of sentence and space
 # 2) Turn it all into two separate classes
 # 4) How do I get \x out?
 # 3) Make multiple versions showing guessing getting lower
@@ -155,6 +155,7 @@ def top_five(txt):
     return going, "For this file the top five most used words are: %s" % (going[:5])
 
 def most_freq_return(txt):
+    """Returns a numerical instead of a string value in a dictionary"""
     if type(txt) == type({}):
         keys = txt.keys()
         first = keys[0]
@@ -181,12 +182,12 @@ nospaces = collapse_whitespace(texts)
 
 #adding comment for github
 lets = []
-for x in nospaces:
+for x in texts:
     if x not in lets:
         lets.append(x)
 alphabet = "".join(sorted(lets))
 # print alphabet
-pink = next_letter_frequencies(nospaces)
+pink = next_letter_frequencies(texts)
 rule2 = next_letter_frequencies(lsttexts)
 
 
@@ -208,7 +209,9 @@ rule2 = next_letter_frequencies(lsttexts)
 # test.testEqual(most_freqs_word(['hi', 'hey', 'bye', 'hi']), ('hi', 'occurs', 2, 'times'))
 # test.testEqual(most_freqs_lets('hey buddy whats going on today'), ('d', 'occurs', 3, 'times'))
 # test.testEqual(most_freqs_lets(['this', 'day', 'has', 'taken', 'its toll']), ('l', 'occurs', 2, 'times'))
-rules = [(".", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'), (None, alphabet)]
+rules = [(".", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'), (' ', alphabet), (None, alphabet)]
+performance('These days they go by so fast. Nothing I can do about it', rules)
+
 
 for key in pink:
     string_to_append = ""
@@ -217,8 +220,14 @@ for key in pink:
     for letter in fix:
         string_to_append += letter
     tuple_to_insert = (key, string_to_append)
-    rules.insert(1,tuple_to_insert)
+    rules.insert(0,tuple_to_insert)
 
+print '----------------------'
+
+# performance('These days they go by so fast. Nothing I can do about it', rules)
+# performance('Joey, what the fuck are you doing', rules)
+# performance('LeBron James for NBA MVP? Here are seven games that make a great case for the Cleveland Cavaliers star. His talent is simply off the chart. I have never seen a guy who is as talented as LeBron, his raw ability is astonishing.', rules)
+performance("What the hell are you doing? I mean this has been fun, but it's crazy that you're thinking about this to begin with.", rules)
 
 please = []
 thanks = []
@@ -231,6 +240,17 @@ doit = zip(please, thanks)
 for i in doit:
     rules.insert(1,i)
 
+# print rules[83030]
+# performance('Hey man hows it hanging.', rules)
 
-print rules[83030]
-performance('Hey man hows it hanging.', rules)
+
+
+
+
+
+
+
+
+
+
+
