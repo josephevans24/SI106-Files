@@ -1,8 +1,6 @@
 import test106 as test
 import csv
-# 1) Add a rule for past two letters and another for end of sentence and space
 # 2) Turn it all into two separate classes
-# 4) How do I get \x out?
 # 3) Make multiple versions showing guessing getting lower
 
 def collapse_whitespace(txt):
@@ -39,6 +37,28 @@ def next_letter_frequencies(txt):
             next_letter_freqs[next_letter] = next_letter_freqs[next_letter] + 1
             #if the next letter is already in the dictionary of next letters after the current letter add one to that value
     return r
+def more_letter_frequencies(txt):
+    r = {}
+    #creating a blank dictionary
+    for i in range(len(txt)-1):
+        #iterating through positions in txt up to the last charcter
+        if txt[i-2: i] not in r:
+            # if the value of txt[i] not in r (i is an integer)
+            r[txt[i-2: i]] = {}
+            #make a new dictionary within the dictionary for that chracter
+        next_letter_freqs = r[txt[i-2: i]]
+        #assings the blank dictionary within the dictionary to next_letter_freqs
+        next_letter = txt[i+1]
+        #assings value next letter to be the position after the current character
+        if next_letter not in next_letter_freqs:
+            #if the next letter is not in the dictionary for that letter value...
+            next_letter_freqs[next_letter] = 1
+            #assing it the value of 1
+        else:
+            next_letter_freqs[next_letter] = next_letter_freqs[next_letter] + 1
+            #if the next letter is already in the dictionary of next letters after the current letter add one to that value
+    return r
+
 
 def most_freqs_lets(txt):
     if type(txt) == type(""):
@@ -175,7 +195,6 @@ for row in orange:
 
 #texts = cool.replace('!', " ").replace('.', ' ').replace(':', ' ').replace(',', ' ').replace('?', ' ').replace("/", ' ').replace('\\', ' ')
 lsttexts = texts.split()
-nospaces = collapse_whitespace(texts)
 #print nospaces
 
 #print word_count(texts, 'hey')
@@ -189,6 +208,8 @@ alphabet = "".join(sorted(lets))
 # print alphabet
 pink = next_letter_frequencies(texts)
 rule2 = next_letter_frequencies(lsttexts)
+
+two_lets = more_letter_frequencies(texts)
 
 
 
@@ -209,8 +230,9 @@ rule2 = next_letter_frequencies(lsttexts)
 # test.testEqual(most_freqs_word(['hi', 'hey', 'bye', 'hi']), ('hi', 'occurs', 2, 'times'))
 # test.testEqual(most_freqs_lets('hey buddy whats going on today'), ('d', 'occurs', 3, 'times'))
 # test.testEqual(most_freqs_lets(['this', 'day', 'has', 'taken', 'its toll']), ('l', 'occurs', 2, 'times'))
-rules = [(".", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'), (' ', alphabet), (None, alphabet)]
-performance('These days they go by so fast. Nothing I can do about it', rules)
+rules = [('.', ' '), (". ", 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'), (' ', alphabet), (None, alphabet)]
+performance('I really like football in the spring time. That Sammy Ginsburg is a really great quarterback.', rules)
+
 
 
 for key in pink:
@@ -220,14 +242,30 @@ for key in pink:
     for letter in fix:
         string_to_append += letter
     tuple_to_insert = (key, string_to_append)
-    rules.insert(0,tuple_to_insert)
-
+    rules.insert(1,tuple_to_insert)
+print len(rules)
 print '----------------------'
 
 # performance('These days they go by so fast. Nothing I can do about it', rules)
 # performance('Joey, what the fuck are you doing', rules)
 # performance('LeBron James for NBA MVP? Here are seven games that make a great case for the Cleveland Cavaliers star. His talent is simply off the chart. I have never seen a guy who is as talented as LeBron, his raw ability is astonishing.', rules)
 performance("What the hell are you doing? I mean this has been fun, but it's crazy that you're thinking about this to begin with.", rules)
+performance('I really like football in the spring time. That Sammy Ginsburg is a really great quarterback.', rules)
+
+for next in two_lets:
+    add_on = ""
+    more = two_lets[next]
+    almost = sorted(more.keys(), key = lambda x: more[x], reverse = True)
+    closer = almost[:3]
+    for lets in closer:
+        add_on += lets
+    tuple_to_insert = (next, add_on)
+    rules.insert(1, tuple_to_insert)
+print '------------------'
+print len(rules)
+performance("What the hell are you doing? I mean this has been fun, but it's crazy that you're thinking about this to begin with.", rules)
+performance('I really like football in the spring time. That Sammy Ginsburg is a really great quarterback.', rules)
+
 
 please = []
 thanks = []
@@ -239,6 +277,13 @@ for b in rule2.values():
 doit = zip(please, thanks)
 for i in doit:
     rules.insert(1,i)
+
+
+print '-------------------'
+print len(rules)
+performance("What the hell are you doing? I mean this has been fun, but it's crazy that you're thinking about this to begin with.", rules)
+performance('I really like football in the spring time. That Sammy Ginsburg is a really great quarterback.', rules)
+
 
 # print rules[83030]
 # performance('Hey man hows it hanging.', rules)

@@ -388,10 +388,8 @@ for key in counts:
 # rules. You want them to take precedence over the generic ordering
 # of guesses that you created in the previous problem.
 
-for a in rules:
-    if 'H' in a:
-        print a
 # this code tests the text against all the rules    
 performance(test_txt, rules)
-performance("Hi", rules)
+print '---------------------------'
+
 # should be 8978 guesses total
