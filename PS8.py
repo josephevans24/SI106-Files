@@ -5,7 +5,6 @@ import test106 as test
 
 ## All graded problems are marked with [PROBLEM <#>].
 
-
 ##### Try/except ###########
 
 # [PROBLEM 1]
@@ -33,9 +32,10 @@ def f(L):
 
 # Convert this string interpolation to one using only the + operator, not %.
 # Make the variable t equal to the same thing as the variable s.
-x = 12
+x = 12.000001
 y = 4
-s = "You have $%d. If you spend $%d, you will have $%d left." % (x, y, x-y)
+s = "You have $%0.06f. If you spend $%d, you will have $%d left." % (x, y, x-y)
+print s
 # fill in the next line to generate the same string using only the + operator.
 # Don't write t = s or otherwise reference s -- use the + operator!
 t = "You have $"+str(x)+". If you spend $" +str(y)+ ", you will have $" +str(x-y)+ " left." 
@@ -59,7 +59,7 @@ test.testEqual(t, s, "convert string concatenation to one using string interpola
 nm = "Albert"
 min_amt = 50
 mile_amt = 0.673892
-albert_str = "%s walked %0.2f miles today in %d minutes." % (nm, mile_amt, min_amt)
+albert_str = "%s walked %0.02f miles today in %d minutes." % (nm, mile_amt, min_amt)
 
 
 # testing
@@ -101,8 +101,7 @@ test.testEqual(walk_reporter("Pythagoras",3.1415926,314),"Pythagoras walked 3.14
 # HINT: Think about where you need to make sure you write newline characters.
 
 header_line = ("Name", "Game-Score")
-one_score = ("Andy", 75) 
-two_score = ("Jen", 82)
+one_score = [("Andy", 75), ("Jen", 82)]
 print type(one_score)
 # Write your code for problem 3 below, using the variables header_line, one_score, and two_score.
 # We've included comments that describe the steps you should take --
@@ -118,8 +117,9 @@ outfile = open("joblue_namescore.csv","w") #creates a new CSV file called grades
 # Step 2. Now write the header line to the file. Don't forget to also write a '\n' character to mark the end of the line.
 outfile.write('"%s","%s"\n' % header_line)
 # Step 3. Now write each othe other two lines to the file. Don't forget to also write '\n' characters to mark the ends of the lines.
-outfile.write('"%s", "%d"\n' % one_score)
-outfile.write('"%s", "%d"\n' % two_score)
+for a in one_score:
+    outfile.write('%s, %d\n' % a)
+
 # Step 4. Now close the file.
 outfile.close()
 # Step 5. Now open the file (in a text editor, and then in Excel or Google Sheets) and check to see you made the file you want!

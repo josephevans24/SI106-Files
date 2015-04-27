@@ -1,5 +1,5 @@
 "airport_name", "status_reason", "current_temp", "recent_update"
-DTW,No known delays for this airport.,57.0 F (13.9 C),2:53 PM Local
-DFW,No known delays for this airport.,81.0 F (27.2 C),1:53 PM Local
-ORD,No known delays for this airport.,59.0 F (15.0 C),1:51 PM Local
-JFK,No known delays for this airport.,58.0 F (14.4 C),2:51 PM Local
+DTW,No known delays for this airport.,42.0 F (5.6 C),5:53 PM Local
+DFW,No known delays for this airport.,74.0 F (23.3 C),4:53 PM Local
+ORD,No known delays for this airport.,54.0 F (12.2 C),4:51 PM Local
+JFK,No known delays for this airport.,49.0 F (9.4 C),5:51 PM Local

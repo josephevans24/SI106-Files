@@ -14,7 +14,7 @@ def letter_freqs(word_list):
                 letter_freq_dict[l] = letter_freq_dict[l] + 1
     return letter_freq_dict
 
-test.testEqual(type(letter_freqs(["hello", "goodbye"])), type({}))
+test.testEqual(type(letter_freqs(["hello", "goodbye"])), type({}), "Looks like you're good to go!")
 test.testEqual(letter_freqs(["good", "bad", "indifferent"]), {'a': 1, 'b': 1, 'e': 2, 'd': 3, 'g': 1, 'f': 2, 'i': 2, 'o': 2, 'n': 2, 'r': 1, 't': 1})
 test.testEqual(letter_freqs(["good"]), {'g':1, 'o':2, 'd':1})
 test.testEqual(letter_freqs([]), {})
@@ -77,6 +77,7 @@ class Car:
         return "Moved forward %.02f miles" % (miles)
 
 p = Car(make = "Chevy", color = "blue")
+
 #return value test
 test.testEqual(p.color, 'blue')
 #Return value Test
@@ -92,6 +93,7 @@ test.testEqual(p.__str__(), 'A blue car:\nMake: Chevy\nHas 4 wheels\nCurrent dis
 #Return Value test
 test.testEqual(type(p.__str__), type(p.move_forward))
 #Return value test
+
 
 
 

@@ -111,6 +111,7 @@ def flickrREST(baseurl = 'https://api.flickr.com/services/rest/',
     d['format'] = format
     for k in extra_params:
         d[k] = extra_params[k]
+        print k
     return requests.get(baseurl, params = d)
 
 ## Here's another example call to flickrREST below -- note that you have to pass in
@@ -159,7 +160,7 @@ for c in m4x:
     time = fix_flickr_resp(ay.text)
     itstime = json.loads(time)
     fixthis[c] = itstime
-#print pretty(fixthis)
+print pretty(fixthis)
  
 # 5) Extract the tags used on each photo, and accumulate frequencies 
 #    with which each tag occurs across all those photos you found when you searched.

@@ -92,6 +92,15 @@ fb_data = {
 # comment answers to these (we won't grade your answers)
 # but we suggest doing so! They
 # may help you think through this big nested data structure.
+for a in fb_data['data']:
+  print a['from']['name']
+for a in fb_data['data'][0]['to']['data']:
+  print a['name']
+print fb_data.keys()
+
+print [word['from']['name'] for word in fb_data['data']]
+print 'STOP'
+
 
 # What type is the structure saved in the variable fb_data?
 #This is a dictionary type with list rooted in it
